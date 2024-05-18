@@ -1,12 +1,13 @@
 package com.cinemas.neon.neonmovieservice.entity;
 
-// import java.sql.Date;
+import java.sql.Date;
 import java.util.UUID;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -17,23 +18,27 @@ public class Movie {
     @Column(name = "id", updatable = false, nullable = false)
     private UUID id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name")
     private String name;
 
-    // @Column(name = "release_date", nullable = false, length = 64)
-    // private Date releaseDate;
+    @Column(name = "real_name")
+    private String realName;
 
-    @JoinColumn(name = "clasification")
+    @Column(name = "clasification")
     private String clasification;
 
-    @Column(name = "image", nullable = false)
+    @Column(name = "image")
     private String image;
 
-    @JoinColumn(name = "duration")
-    private Integer duration;
+    @ManyToOne
+    @JoinColumn(name = "movie_genre_id")
+    private MovieGenre genre;
 
-    @Column(name = "id_genre", nullable = true)
-    private UUID genre;
+    @Column(name = "release_date")
+    private Date releaseDate;
+
+    @Column(name = "duration")
+    private Integer duration;
 
     @Column(name = "context")
     private String context;
@@ -43,9 +48,6 @@ public class Movie {
 
     @Column(name = "director")
     private String director;
-
-    @Column(name = "real_name")
-    private String realName;
 
     public UUID getId() {
         return id;
@@ -63,13 +65,13 @@ public class Movie {
         this.name = name;
     }
 
-    // public Date getReleaseDate() {
-    //     return releaseDate;
-    // }
+    public String getRealName() {
+        return realName;
+    }
 
-    // public void setReleaseDate(Date releaseDate) {
-    //     this.releaseDate = releaseDate;
-    // }
+    public void setRealName(String realName) {
+        this.realName = realName;
+    }
 
     public String getClasification() {
         return clasification;
@@ -87,20 +89,28 @@ public class Movie {
         this.image = image;
     }
 
+    public MovieGenre getGenre() {
+        return genre;
+    }
+
+    public void setGenre(MovieGenre genre) {
+        this.genre = genre;
+    }
+
+    public Date getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setReleaseDate(Date releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
     public Integer getDuration() {
         return duration;
     }
 
     public void setDuration(Integer duration) {
         this.duration = duration;
-    }
-
-    public UUID getGenre() {
-        return genre;
-    }
-
-    public void setGenre(UUID genre) {
-        this.genre = genre;
     }
 
     public String getContext() {
@@ -125,14 +135,6 @@ public class Movie {
 
     public void setDirector(String director) {
         this.director = director;
-    }
-
-    public String getRealName() {
-        return realName;
-    }
-
-    public void setRealName(String realName) {
-        this.realName = realName;
     }
 
 }

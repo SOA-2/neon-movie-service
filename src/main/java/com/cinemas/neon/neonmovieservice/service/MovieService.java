@@ -16,11 +16,11 @@ public class MovieService {
     @Autowired
     MovieDao movieDao;
 
-    public List<Movie> getBooks() {
+    public List<Movie> getMovies() {
         return movieDao.findAll();
     }
 
-    public Optional<Movie> getBook(UUID id) {
+    public Optional<Movie> getMovie(UUID id) {
         return movieDao.findById(id);
     }
 

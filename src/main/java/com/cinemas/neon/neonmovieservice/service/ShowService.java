@@ -1,6 +1,7 @@
 package com.cinemas.neon.neonmovieservice.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,11 @@ public class ShowService {
         return showDao.findAll();
     }
 
-    public List<Show> getByMovieId(UUID id) {
+    public Optional<Show> getShow(UUID id) {
+        return showDao.findById(id);
+    }
+
+    public List<Show> getShowsByMovieId(UUID id) {
         return showDao.findByMovieId(id);
     }
 

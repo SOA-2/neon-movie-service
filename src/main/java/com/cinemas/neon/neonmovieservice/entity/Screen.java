@@ -18,9 +18,35 @@ public class Screen {
 
     @ManyToOne
     @JoinColumn(name = "theatre_id")
-    private Theatre screen;
+    private Theatre theatre;
 
     @ManyToOne
     @JoinColumn(name = "fare_id")
     private Fare fare;
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public Theatre getTheatre() {
+        return theatre;
+    }
+
+    public void setTheatre(Theatre theatre) {
+        this.theatre = theatre;
+    }
+
+    public Fare getFare() {
+        return fare;
+    }
+
+    public void setFare(Fare fare) {
+        this.fare = fare;
+    }
+
+
 }

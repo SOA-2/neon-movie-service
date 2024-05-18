@@ -44,12 +44,12 @@ public class MovieController {
 
     @GetMapping(path = "")
     public List<Movie> getBooks() {
-        return movieService.getBooks();
+        return movieService.getMovies();
     }
 
     @GetMapping(path = "/{id}")
     public Optional<Movie> getBook(@PathVariable UUID id) {
-        return movieService.getBook(id);
+        return movieService.getMovie(id);
     }
 
 }

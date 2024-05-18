@@ -1,6 +1,7 @@
 package com.cinemas.neon.neonmovieservice.controller;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +26,13 @@ public class ShowController {
     }
 
     @GetMapping(path = "/{id}")
-    public List<Show> getShow(@PathVariable UUID id) {
-        return showService.getByMovieId(id);
+    public Optional<Show> getShow(@PathVariable UUID id) {
+        return showService.getShow(id);
+    }
+
+    @GetMapping(path = "/movie/{id}")
+    public List<Show> getShowsByMovieId(@PathVariable UUID id) {
+        return showService.getShowsByMovieId(id);
     }
 
 }

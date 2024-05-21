@@ -1,0 +1,14 @@
+version: "3.7"
+services:
+  custom-logs:
+    image: neon-movie-service:1.0.0
+    container_name: neon-movie-service
+    restart: always
+    ports:
+      - 8039:8039
+    environment:
+      # - DB_URL=jdbc:postgresql://host.docker.internal:5432/logs
+      # - DB_USERNAME=test
+      # - DB_PASSWORD=test
+    volumes:
+      # - /Users/julian.henao.marin/Documents/Personal/Charlas/logs:/logs/
